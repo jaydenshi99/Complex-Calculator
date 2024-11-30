@@ -2,6 +2,7 @@
 #include <cmath>
 
 #include "../include/complex.h"
+#include "../include/helper.h"
 
 using namespace std;
 
@@ -25,6 +26,28 @@ void Complex::setImag(double i) {
     imag = i;
 }
 
+// Arithmetic Operations
+Complex Complex::operator+(const Complex& other) const {
+    return Complex(real + other.real, imag + other.imag);
+}
+
+Complex Complex::operator-(const Complex& other) const {
+    return Complex(real - other.real, imag - other.imag);
+}
+
+Complex Complex::operator*(const Complex& other) const {
+    return Complex(
+        real * other.real - imag * other.imag, 
+        real * other.imag + imag * other.real
+    );
+}
+
+Complex Complex::operator/(const Complex& other) const {
+    double m_squared = other.magnitude() * other.magnitude();
+
+    return Complex(real / m_squared, imag / m_squared) * other.conjugate();
+}
+
 // Other Operations
 double Complex::magnitude() const {
     return sqrt(real * real + imag * imag);
@@ -36,5 +59,8 @@ Complex Complex::conjugate() const {
 
 // Display
 void Complex::print_cartesian() const {
-    cout << "complex number in cartesian form\n";
+    if (!isZero(real)) {
+        
+    }
+    
 }
