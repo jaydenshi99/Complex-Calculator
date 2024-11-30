@@ -1,8 +1,6 @@
 #ifndef COMPLEX_H
 #define COMPLEX_H
 
-#include <iostream>
-
 class Complex {
     private:
         double real;
@@ -19,6 +17,13 @@ class Complex {
         void setImag(double i);
 
         // Arithmetic Operators
+        Complex operator+(const Complex& other) const;
+        Complex operator-(const Complex& other) const;
+        Complex operator*(const Complex& other) const;
+        Complex operator/(const Complex& other) const;
+
+        // Equality
+        bool operator==(const Complex& other) const;
 
         // Other Operations
         double magnitude() const;

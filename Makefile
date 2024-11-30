@@ -5,10 +5,10 @@ CXX = g++
 CXXFLAGS = -Iinclude -std=c++17 -Wall
 
 # Source files
-SRC = src/main.cpp src/complex.cpp src/calculator.cpp
+SRC = src/main.cpp src/complex.cpp src/calculator.cpp src/helper.cpp
 
 # Output executable
-TARGET = complex_calculator
+TARGET = calc
 
 # Build target
 all: $(TARGET)
