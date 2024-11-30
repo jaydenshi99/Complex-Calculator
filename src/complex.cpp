@@ -60,7 +60,24 @@ Complex Complex::conjugate() const {
 // Display
 void Complex::print_cartesian() const {
     if (!isZero(real)) {
-        
+        cout << real;
     }
-    
+
+    if (!isZero(imag)) {
+        if (compareDouble(imag, 0) == 1) {
+            if (isZero(real)) {
+                cout << "i";
+            } else {
+                cout << " + i";
+            }
+        } else if (compareDouble(imag, 0) == -1) {
+            if (isZero(real)) {
+                cout << "-i";
+            } else {
+                cout << " - i";
+            }
+        }
+
+        cout << imag << endl;
+    }
 }
