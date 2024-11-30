@@ -63,21 +63,24 @@ void Complex::print_cartesian() const {
         cout << real;
     }
 
-    if (!isZero(imag)) {
-        if (compareDouble(imag, 0) == 1) {
-            if (isZero(real)) {
-                cout << "i";
-            } else {
-                cout << " + i";
-            }
-        } else if (compareDouble(imag, 0) == -1) {
-            if (isZero(real)) {
-                cout << "-i";
-            } else {
-                cout << " - i";
-            }
+    if (compareDouble(imag, 1) == 0) {
+        if (isZero(real)) {
+            cout << "i";
+        } else {
+            cout << " + i";
         }
 
-        cout << imag << endl;
+    } else if (!isZero(imag)) {
+        if (isZero(real)) {
+            cout << imag << "i";
+        } else {
+            if (compareDouble(imag, 0) == 1) {
+                cout << " + " << fabs(imag) << "i";
+            } else {
+                cout << " - " << fabs(imag) << "i";
+            }
+        }
     }
+
+    cout << endl;
 }
