@@ -19,6 +19,13 @@ class Complex {
         void setImag(double i);
 
         // Arithmetic Operators
+        Complex operator+(const Complex& other) const;
+        Complex operator-(const Complex& other) const;
+        Complex operator*(const Complex& other) const;
+        Complex operator/(const Complex& other) const;
+
+        // Equality
+        Complex operator==(const Complex& other) const;
 
         // Other Operations
         double magnitude() const;
