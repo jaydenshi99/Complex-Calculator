@@ -11,16 +11,20 @@ int main (void) {
             Complex c = Complex(x, y);
             Complex z = Complex(x, y);
 
-            for (int i = 0; i < 100; i++) {
+            bool diverges = false;
+            for (int i = 0; i < 10000; i++) {
                 z = z * z + c;
-            }
-
-            if (
+                if (
                 fabs(z.getReal()) == INFINITY || z.getImag() == INFINITY ||
                 isnan(z.getReal()) || isnan(z.getImag())
-            ) {
-                cout << " ";
-            } else {
+                ) {
+                    cout << " ";
+                    diverges = true;
+                    break;
+                }
+            }
+
+            if (!diverges) {
                 cout << "#";
             }
         }
