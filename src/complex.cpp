@@ -48,6 +48,11 @@ Complex Complex::operator/(const Complex& other) const {
     return Complex(real / m_squared, imag / m_squared) * other.conjugate();
 }
 
+// Equality
+bool Complex::operator==(const Complex& other) const {
+    return compareDouble(real, other.real) == 0 && compareDouble(imag, other.imag) == 0;
+}
+
 // Other Operations
 double Complex::magnitude() const {
     return sqrt(real * real + imag * imag);

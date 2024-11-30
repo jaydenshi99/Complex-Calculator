@@ -5,11 +5,23 @@
 using namespace std;
 
 int main (void) {
-    Complex z = Complex(2, 2);
-    Complex w = Complex(1, 1);
+    const double inc = 0.05;
+    for (double y = 1; y >= -1; y -= inc) {
+        for (double x = -2; x <= -1; x += inc) {
+            Complex c = Complex(x, y);
+            Complex z = Complex(x, y);
 
-    (z + w).print_cartesian();
-    (z - w).print_cartesian();
-    (z * w).print_cartesian();
-    (z / w).print_cartesian();
+            for (int i = 0; i < 20; i++) {
+                z = z * z + c;
+            }
+
+            if (fabs(z.getImag()) == INFINITY || z.getReal() == INFINITY) {
+                cout << " ";
+            } else {
+                cout << "#";
+            }
+        }
+
+        cout << endl;
+    }
 }

@@ -23,7 +23,7 @@ class Complex {
         Complex operator/(const Complex& other) const;
 
         // Equality
-        Complex operator==(const Complex& other) const;
+        bool operator==(const Complex& other) const;
 
         // Other Operations
         double magnitude() const;
