@@ -5,7 +5,7 @@ CXX = g++
 CXXFLAGS = -Iinclude -std=c++17 -Wall
 
 # Source files
-SRC = src/main.cpp src/complex.cpp src/calculator.cpp src/helper.cpp
+SRC = src/main.cpp src/complex.cpp src/calculator.cpp src/helper.cpp src/other.cpp
 
 # Output executable
 TARGET = calc
