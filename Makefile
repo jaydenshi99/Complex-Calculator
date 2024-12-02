@@ -1,21 +1,20 @@
-# Compiler
+# Compiler and flags
 CXX = g++
+CXXFLAGS = -Wall -Iinclude -g
 
-# Compiler flags
-CXXFLAGS = -Iinclude -std=c++17 -Wall
-
-# Source files
-SRC = src/main.cpp src/complex.cpp src/calculator.cpp src/helper.cpp src/other.cpp
-
-# Output executable
-TARGET = calc
+# Source files and output
+SRC = $(wildcard src/*.cpp)
+OBJ = $(SRC:.cpp=.o)
+TARGET = mandelbrot
 
 # Build target
-all: $(TARGET)
+$(TARGET): $(OBJ)
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
-$(TARGET): $(SRC)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC)
+# Rule to create object files
+src/%.o: src/%.cpp
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-# Clean build files
+# Clean rule to remove generated files
 clean:
-	rm -f $(TARGET)
+	rm -f $(OBJ) $(TARGET)
