@@ -5,7 +5,7 @@ CXXFLAGS = -Wall -Iinclude -g
 # Source files and output
 SRC = $(wildcard src/*.cpp)
 OBJ = $(SRC:.cpp=.o)
-TARGET = mandelbrot
+TARGET = calc
 
 # Build target
 $(TARGET): $(OBJ)
