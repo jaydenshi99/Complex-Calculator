@@ -1,8 +1,14 @@
 #ifndef CALCULATOR_H
 #define CALCULATOR_H
 
-class Calculator {
+#include <vector>
 
+#include "expression.h"
+
+using namespace std;
+
+class Calculator {
+    
 };
 
 #endif
