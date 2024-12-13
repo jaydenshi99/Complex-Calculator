@@ -12,9 +12,17 @@ class Calculator {
     private:
         std::vector<Expression> expressions;
         std::unordered_map<std::string, Complex> variables;
+
+        // User input
+        void readLine();
     
     public:
-        Calculator(std::vector<Expression> e, std::unordered_map<std::string, Complex> v);
+        // Constructor
+        Calculator();
+
+        // System Control
+        void initialise();
+        void shutdown();
 };
 
 #endif

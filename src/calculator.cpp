@@ -8,4 +8,4 @@
 using namespace std;
 
 // Constructor
-Calculator::Calculator(vector<Expression> e, unordered_map<string, Complex> v) : expressions(e), variables(v) {}
+Calculator::Calculator() : expressions(), variables() {}
