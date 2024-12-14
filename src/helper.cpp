@@ -21,6 +21,7 @@ bool isZero(double a) {
     return fabs(a) < EPSILON;
 }
 
+// Splits an expression by the first instance of the given operator
 vector<string> splitExpression (string expression, char opt) {
     string lhs = "";
     string rhs = "";
@@ -45,8 +46,18 @@ vector<string> splitExpression (string expression, char opt) {
         }
     }
 
+    // Return empty vector to indicate no operator was found
     if (!operatorFound) {
         return vector<string>();
+    }
+
+    // Remove parentheses
+    if (lhs.front() == '(' && lhs.back() == ')') {
+        lhs = lhs.substr(1, lhs.length() - 2);
+    }
+
+    if (rhs.front() == '(' && rhs.back() == ')') {
+        rhs = rhs.substr(1, rhs.length() - 2);
     }
 
     return vector<string>{lhs, rhs};

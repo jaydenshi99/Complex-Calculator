@@ -75,6 +75,11 @@ Complex Calculator::evaluateExpression(string expression) {
     }
 
     vector<string> splitXpn = splitExpression(expression, '+');
+    if (!splitXpn.empty()) {
+        Complex lhs = evaluateExpression(splitXpn[0]);
+        Complex rhs = evaluateExpression(splitXpn[1]);
+        return lhs + rhs;
+    }
 }
 
 // System Control
