@@ -5,6 +5,7 @@
 #include <cctype>
 
 #include <../include/calculator.h>
+#include <../include/helper.h>
 
 #define NEXT true
 #define EXIT false
@@ -68,7 +69,12 @@ bool Calculator::readLine() {
 
 // Evaluation
 Complex Calculator::evaluateExpression(string expression) {
-    return Complex(1, 2);
+    // Empty expression is 0
+    if (expression == "") {
+        return Complex(0, 0);
+    }
+
+    vector<string> splitXpn = splitExpression(expression, '+');
 }
 
 // System Control
