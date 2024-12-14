@@ -1,6 +1,6 @@
 # Compiler and flags
 CXX = g++
-CXXFLAGS = -Wall -Iinclude -g
+CXXFLAGS = -Wall -Iinclude -g -std=c++20
 
 # Source files and output
 SRC = $(wildcard src/*.cpp)

@@ -63,7 +63,32 @@ Complex Complex::conjugate() const {
 }
 
 // Display
-void Complex::print_cartesian() const {
+void Complex::display_cartesian_no_space() const {
+    if (!isZero(real)) {
+        cout << real;
+    }
+
+    if (compareDouble(imag, 1) == 0) {
+        if (isZero(real)) {
+            cout << "i";
+        } else {
+            cout << "+i";
+        }
+
+    } else if (!isZero(imag)) {
+        if (isZero(real)) {
+            cout << imag << "i";
+        } else {
+            if (compareDouble(imag, 0) == 1) {
+                cout << "+" << fabs(imag) << "i";
+            } else {
+                cout << "-" << fabs(imag) << "i";
+            }
+        }
+    }
+}
+
+void Complex::display_cartesian() const {
     if (!isZero(real)) {
         cout << real;
     }

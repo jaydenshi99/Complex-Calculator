@@ -16,7 +16,7 @@ class Calculator {
         bool readLine();
 
         // Evaluation
-        Complex evaluateExpression();
+        Complex evaluateExpression(std::string expression);
 
     public:
         // Constructor
