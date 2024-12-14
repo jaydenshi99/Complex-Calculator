@@ -8,6 +8,6 @@
 
 int compareDouble(double a, double b);
 bool isZero(double a);
-vector<std::string> splitExpression(string expression, char opt);
+std::vector<std::string> splitExpression(std::string expression, char opt);
 
 #endif
