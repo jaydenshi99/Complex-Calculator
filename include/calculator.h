@@ -13,7 +13,10 @@ class Calculator {
         std::unordered_map<std::string, std::string> variables;
 
         // User Input
-        void readLine();
+        bool readLine();
+
+        // Evaluation
+        Complex evaluateExpression();
 
     public:
         // Constructor
@@ -21,7 +24,6 @@ class Calculator {
 
         // System Control
         void initialise();
-        void shutdown();
 };
 
 #endif

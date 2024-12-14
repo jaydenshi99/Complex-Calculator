@@ -11,10 +11,25 @@ using namespace std;
 Calculator::Calculator() : expressions(), variables() {}
 
 // User Input
-void Calculator::readLine() {
+bool Calculator::readLine() {
     string line;
 
     std::getline(cin, line);
 
+    if (line == "exit") {
+        return false;
+    }
+
     cout << line << endl;
+
+    return true;
+}
+
+// System Control
+void Calculator::initialise() {
+    cout << "Calculator Initialised" << endl;
+
+    while (readLine()) {
+
+    }
 }
