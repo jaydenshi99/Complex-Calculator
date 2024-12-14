@@ -5,17 +5,16 @@
 #include <unordered_map>
 #include <string>
 
-#include "expression.h"
 #include "complex.h"
 
 class Calculator {
     private:
-        std::vector<Expression> expressions;
-        std::unordered_map<std::string, Complex> variables;
+        std::vector<std::string> expressions;
+        std::unordered_map<std::string, std::string> variables;
 
-        // User input
+        // User Input
         void readLine();
-    
+
     public:
         // Constructor
         Calculator();
