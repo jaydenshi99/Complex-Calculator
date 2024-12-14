@@ -27,7 +27,7 @@ bool Calculator::readLine() {
 
 // System Control
 void Calculator::initialise() {
-    cout << "Calculator Initialised" << endl;
+    cout << "Calculator ready" << endl;
 
     while (readLine()) {
 
