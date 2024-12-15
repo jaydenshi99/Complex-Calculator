@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <vector>
 #include <cctype>
+#include <stdexcept>
 
 #include <../include/calculator.h>
 #include <../include/helper.h>
@@ -70,16 +71,32 @@ bool Calculator::readLine() {
 // Evaluation
 Complex Calculator::evaluateExpression(string expression) {
     // Empty expression is 0
-    if (expression == "") {
+    if (expression == "" || expression == "()") {
         return Complex(0, 0);
     }
 
+    // Expression is a real number
+    try {
+        return Complex(stod(expression), 0);
+    } catch (...) {}
+
+    // Expression is complex number
+    if (expression.back() == 'i') {
+        expression.pop_back();
+        try {
+            return Complex(0, stod(expression));
+        } catch (...) {}
+    }
+
+    // Addition
     vector<string> splitXpn = splitExpression(expression, '+');
     if (!splitXpn.empty()) {
         Complex lhs = evaluateExpression(splitXpn[0]);
         Complex rhs = evaluateExpression(splitXpn[1]);
         return lhs + rhs;
     }
+
+    return Complex(); // Should never reach this point
 }
 
 // System Control
