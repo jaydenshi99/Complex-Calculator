@@ -83,10 +83,10 @@ Complex Calculator::evaluateExpression(string expression) {
     }
 
     // Expression is a constant
-    if (expression == "E") {
+    if (expression == "e") {
         if (debugMode) cout << "exponential constant: " << expression << endl;
         return Complex(2.718281828459045, 0);
-    } else if (expression == "PI") {
+    } else if (expression == "pi") {
         if (debugMode) cout << "pi constant: " << expression << endl;
         return Complex(3.141592653589793, 0);
     }
