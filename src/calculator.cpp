@@ -14,7 +14,7 @@
 using namespace std;
 
 // Constructor
-Calculator::Calculator() : expressions(), variables() {}
+Calculator::Calculator() : expressions(), variables(), debugMode(false) {}
 
 // User Input
 bool Calculator::readLine() {
@@ -25,6 +25,12 @@ bool Calculator::readLine() {
     // Check if calculator is terminating
     if (line == "exit" || line == "EXIT") {
         return EXIT;
+    }
+
+    // Settings
+    if (line == "debug") {
+        toggleDebug();
+        return NEXT;
     }
 
     // Remove spaces in expression
@@ -72,22 +78,22 @@ bool Calculator::readLine() {
 Complex Calculator::evaluateExpression(string expression) {
     // Empty expression is 0
     if (expression == "" || expression == "()") {
-        cout << "empty: " << expression << endl;
+        if (debugMode) cout << "empty: " << expression << endl;
         return Complex(0, 0);
     }
 
     // Expression is a constant
     if (expression == "E") {
-        cout << "exponential constant: " << expression << endl;
+        if (debugMode) cout << "exponential constant: " << expression << endl;
         return Complex(2.718281828459045, 0);
     } else if (expression == "PI") {
-        cout << "pi constant: " << expression << endl;
+        if (debugMode) cout << "pi constant: " << expression << endl;
         return Complex(3.141592653589793, 0);
     }
 
     // Expression is a real number
     if (isNumber(expression)) {
-        cout << "real number: " << expression << endl;
+        if (debugMode) cout << "real number: " << expression << endl;
         return Complex(stod(expression), 0);
     }
 
@@ -95,12 +101,12 @@ Complex Calculator::evaluateExpression(string expression) {
     if (expression.back() == 'i') {
         expression.pop_back();
         if (expression == "") {
-            cout << "imaginary number: " << expression << 'i' << endl;
+            if (debugMode) cout << "imaginary number: " << expression << 'i' << endl;
             return Complex(0, 1);
         }
 
         if (isNumber(expression)) {
-            cout << "imaginary number: " << expression << 'i' << endl;
+            if (debugMode) cout << "imaginary number: " << expression << 'i' << endl;
             return Complex(0, stod(expression));
         }
         expression.push_back('i');
@@ -108,12 +114,13 @@ Complex Calculator::evaluateExpression(string expression) {
 
     // Expression is a variable
     if (variables.find(expression) != variables.end()) {
+        if (debugMode) cout << "variable: " << expression << endl;
         return evaluateExpression(variables[expression]);
     }
 
     // Expression is enclosed by parentheses
     if (isEnclosedByParentheses(expression)) {
-        cout << "in parentheses: " << expression << endl;
+        if (debugMode) cout << "in parentheses: " << expression << endl;
         return evaluateExpression(expression.substr(1, expression.length() - 2));
     }
 
@@ -122,7 +129,7 @@ Complex Calculator::evaluateExpression(string expression) {
     // Addition
     splitXpn = splitExpression(expression, '+');
     if (!splitXpn.empty()) {
-        cout << "addition: " << splitXpn[0] << "+" << splitXpn[1] << endl;
+        if (debugMode) cout << "addition: " << splitXpn[0] << "+" << splitXpn[1] << endl;
         Complex lhs = evaluateExpression(splitXpn[0]);
         Complex rhs = evaluateExpression(splitXpn[1]);
         return lhs + rhs;
@@ -131,7 +138,7 @@ Complex Calculator::evaluateExpression(string expression) {
     // Subtraction
     splitXpn = splitExpression(expression, '-');
     if (!splitXpn.empty()) {
-        cout << "subtraction: " << splitXpn[0] << "-" << splitXpn[1] << endl;
+        if (debugMode) cout << "subtraction: " << splitXpn[0] << "-" << splitXpn[1] << endl;
         Complex lhs = evaluateExpression(splitXpn[0]);
         Complex rhs = evaluateExpression(splitXpn[1]);
         return lhs - rhs;
@@ -140,7 +147,7 @@ Complex Calculator::evaluateExpression(string expression) {
     // Multiplication
     splitXpn = splitExpression(expression, '*');
     if (!splitXpn.empty()) {
-        cout << "multiplication: " << splitXpn[0] << "*" << '(' << splitXpn[1] << ')' << endl;
+        if (debugMode) cout << "multiplication: " << splitXpn[0] << "*" << '(' << splitXpn[1] << ')' << endl;
         Complex lhs = evaluateExpression(splitXpn[0]);
         Complex rhs = evaluateExpression(splitXpn[1]);
         return lhs * rhs;
@@ -149,7 +156,7 @@ Complex Calculator::evaluateExpression(string expression) {
     // Division 
     splitXpn = splitExpression(expression, '/');
     if (!splitXpn.empty()) {
-        cout << "division: " << splitXpn[0] << "/" << splitXpn[1] << endl;
+        if (debugMode) cout << "division: " << splitXpn[0] << "/" << splitXpn[1] << endl;
         Complex lhs = evaluateExpression(splitXpn[0]);
         Complex rhs = evaluateExpression(splitXpn[1]);
         return lhs / rhs;
@@ -158,6 +165,16 @@ Complex Calculator::evaluateExpression(string expression) {
     // Should never reach this point
     cout << "bug in evaluate expression" << endl;
     return Complex(); 
+}
+
+// Settings
+void Calculator::toggleDebug() {
+    debugMode = !debugMode;
+    if (debugMode) {
+        cout << "Debug mode on" << endl;
+    } else {
+        cout << "Debug mode off" << endl;
+    }
 }
 
 // System Control
