@@ -106,6 +106,7 @@ Complex Calculator::evaluateExpression(string expression) {
         return lhs + rhs;
     }
 
+    cout << "bug in evaluate expression" << endl;
     return Complex(); // Should never reach this point
 }
 

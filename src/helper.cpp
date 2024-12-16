@@ -30,7 +30,7 @@ vector<string> splitExpression (string expression, char opt) {
 
     bool operatorFound = false;
     for (char c : expression) {
-        if (c == opt && lbCount == rbCount) {
+        if (c == opt && lbCount == rbCount && !operatorFound) {
             operatorFound = true;
             continue;
         } else if (c == '(') {
