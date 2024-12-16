@@ -62,10 +62,10 @@ bool Calculator::readLine() {
         res.display_cartesian_no_space();
         cout << endl;
     } else if (equalCharCount == 0) {
-        expressions.push_back(line);
         Complex res = evaluateExpression(line);
         res.display_cartesian_no_space();
         cout << endl;
+        expressions.push_back(line);
     } else {
         cout << "ERROR: multiple equal signs" << endl;
         return NEXT;
