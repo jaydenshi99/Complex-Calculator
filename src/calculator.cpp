@@ -77,20 +77,26 @@ Complex Calculator::evaluateExpression(string expression) {
     }
 
     // Expression is a real number
-    try {
+    if (isNumber(expression)) {
         cout << "real number: " << expression << endl;
         return Complex(stod(expression), 0);
-    } catch (...) {}
+    }
 
     // Expression is complex number
     if (expression.back() == 'i') {
         expression.pop_back();
-        try {
-            cout << "imaginary number: " << expression << endl;
-            return Complex(0, stod(expression));
-        } catch (...) {}
-    }
+        if (expression == "") {
+            cout << "imaginary number: " << expression << 'i' << endl;
+            return Complex(0, 1);
+        }
 
+        if (isNumber(expression)) {
+            cout << "imaginary number: " << expression << 'i' << endl;
+            return Complex(0, stod(expression));
+        }
+        expression.push_back('i');
+    }
+    
     // Addition
     vector<string> splitXpn = splitExpression(expression, '+');
     if (!splitXpn.empty()) {

@@ -62,3 +62,16 @@ vector<string> splitExpression (string expression, char opt) {
 
     return vector<string>{lhs, rhs};
 }
+
+bool isNumber(const std::string& str) {
+    // Check if the string is a valid number
+    try {
+        size_t idx;
+        std::stod(str, &idx); // Convert to double and get the position of the last parsed character
+        return idx == str.size(); // Ensure the entire string was parsed
+    } catch (const std::invalid_argument&) {
+        return false; // Not a valid number
+    } catch (const std::out_of_range&) {
+        return false; // Number is too large or small
+    }
+}
