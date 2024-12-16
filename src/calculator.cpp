@@ -96,14 +96,45 @@ Complex Calculator::evaluateExpression(string expression) {
         }
         expression.push_back('i');
     }
+
+    vector<string> splitXpn;
+
+    // TODO: Implement Brackets
     
     // Addition
-    vector<string> splitXpn = splitExpression(expression, '+');
+    splitXpn = splitExpression(expression, '+');
     if (!splitXpn.empty()) {
         cout << "addition: " << splitXpn[0] << "+" << splitXpn[1] << endl;
         Complex lhs = evaluateExpression(splitXpn[0]);
         Complex rhs = evaluateExpression(splitXpn[1]);
         return lhs + rhs;
+    }
+
+    // Subtraction
+    splitXpn = splitExpression(expression, '-');
+    if (!splitXpn.empty()) {
+        cout << "subtraction: " << splitXpn[0] << "-" << splitXpn[1] << endl;
+        Complex lhs = evaluateExpression(splitXpn[0]);
+        Complex rhs = evaluateExpression(splitXpn[1]);
+        return lhs - rhs;
+    }
+
+    // Multiplication
+    splitXpn = splitExpression(expression, '*');
+    if (!splitXpn.empty()) {
+        cout << "multiplication: " << splitXpn[0] << "*" << '(' << splitXpn[1] << ')' << endl;
+        Complex lhs = evaluateExpression(splitXpn[0]);
+        Complex rhs = evaluateExpression(splitXpn[1]);
+        return lhs * rhs;
+    }
+
+    // Division 
+    splitXpn = splitExpression(expression, '/');
+    if (!splitXpn.empty()) {
+        cout << "division: " << splitXpn[0] << "/" << splitXpn[1] << endl;
+        Complex lhs = evaluateExpression(splitXpn[0]);
+        Complex rhs = evaluateExpression(splitXpn[1]);
+        return lhs / rhs;
     }
 
     cout << "bug in evaluate expression" << endl;
