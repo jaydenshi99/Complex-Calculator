@@ -100,7 +100,7 @@ Complex Calculator::evaluateExpression(string expression) {
     // Addition
     vector<string> splitXpn = splitExpression(expression, '+');
     if (!splitXpn.empty()) {
-        cout << "addition: " << splitXpn[0] << " + " << splitXpn[1] << endl;
+        cout << "addition: " << splitXpn[0] << "+" << splitXpn[1] << endl;
         Complex lhs = evaluateExpression(splitXpn[0]);
         Complex rhs = evaluateExpression(splitXpn[1]);
         return lhs + rhs;
