@@ -106,6 +106,11 @@ Complex Calculator::evaluateExpression(string expression) {
         expression.push_back('i');
     }
 
+    // Expression is enclosed by parentheses
+    if (isEnclosedByParentheses(expression)) {
+        return evaluateExpression(expression.substr(1, expression.length() - 2));
+    }
+
     vector<string> splitXpn;
     
     // Addition
