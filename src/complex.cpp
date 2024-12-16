@@ -64,6 +64,10 @@ Complex Complex::conjugate() const {
 
 // Display
 void Complex::display_cartesian_no_space() const {
+    if (isZero(real) && isZero(imag)) {
+        cout << 0;
+    }
+
     if (!isZero(real)) {
         cout << real;
     }
@@ -89,6 +93,10 @@ void Complex::display_cartesian_no_space() const {
 }
 
 void Complex::display_cartesian() const {
+    if (isZero(real) && isZero(imag)) {
+        cout << 0;
+    }
+    
     if (!isZero(real)) {
         cout << real;
     }

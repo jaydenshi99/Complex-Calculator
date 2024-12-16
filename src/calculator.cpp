@@ -72,11 +72,13 @@ bool Calculator::readLine() {
 Complex Calculator::evaluateExpression(string expression) {
     // Empty expression is 0
     if (expression == "" || expression == "()") {
+        cout << "empty: " << expression << endl;
         return Complex(0, 0);
     }
 
     // Expression is a real number
     try {
+        cout << "real number: " << expression << endl;
         return Complex(stod(expression), 0);
     } catch (...) {}
 
@@ -84,6 +86,7 @@ Complex Calculator::evaluateExpression(string expression) {
     if (expression.back() == 'i') {
         expression.pop_back();
         try {
+            cout << "imaginary number: " << expression << endl;
             return Complex(0, stod(expression));
         } catch (...) {}
     }
@@ -91,6 +94,7 @@ Complex Calculator::evaluateExpression(string expression) {
     // Addition
     vector<string> splitXpn = splitExpression(expression, '+');
     if (!splitXpn.empty()) {
+        cout << "addition: " << splitXpn[0] << " + " << splitXpn[1] << endl;
         Complex lhs = evaluateExpression(splitXpn[0]);
         Complex rhs = evaluateExpression(splitXpn[1]);
         return lhs + rhs;
