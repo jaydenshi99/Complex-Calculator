@@ -52,11 +52,11 @@ bool Calculator::readLine() {
 
         variables[variableName] = expression;
         Complex res = evaluateExpression(expression);
-
         cout << variableName << "=";
         res.display_cartesian_no_space();
         cout << endl;
     } else if (equalCharCount == 0) {
+        expressions.push_back(line);
         Complex res = evaluateExpression(line);
         res.display_cartesian_no_space();
         cout << endl;
@@ -104,6 +104,11 @@ Complex Calculator::evaluateExpression(string expression) {
             return Complex(0, stod(expression));
         }
         expression.push_back('i');
+    }
+
+    // Expression is a variable
+    if (variables.find(expression) != variables.end()) {
+        return evaluateExpression(variables[expression]);
     }
 
     // Expression is enclosed by parentheses
