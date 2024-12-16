@@ -76,6 +76,15 @@ Complex Calculator::evaluateExpression(string expression) {
         return Complex(0, 0);
     }
 
+    // Expression is a constant
+    if (expression == "E") {
+        cout << "exponential constant: " << expression << endl;
+        return Complex(2.718281828459045, 0);
+    } else if (expression == "PI") {
+        cout << "pi constant: " << expression << endl;
+        return Complex(3.141592653589793, 0);
+    }
+
     // Expression is a real number
     if (isNumber(expression)) {
         cout << "real number: " << expression << endl;
@@ -98,8 +107,6 @@ Complex Calculator::evaluateExpression(string expression) {
     }
 
     vector<string> splitXpn;
-
-    // TODO: Implement Brackets
     
     // Addition
     splitXpn = splitExpression(expression, '+');

@@ -1,3 +1,8 @@
+#include <string>
+#include <vector>
+#include <cmath>
+#include <stack>
+
 #include "../include/helper.h"
 
 using namespace std;
