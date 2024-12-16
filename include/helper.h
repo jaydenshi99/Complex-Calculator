@@ -3,6 +3,8 @@
 
 #include <string>
 #include <vector>
+#include <cmath>
+#include <stack>
 
 #define EPSILON 1e-9
 
@@ -10,5 +12,6 @@ int compareDouble(double a, double b);
 bool isZero(double a);
 std::vector<std::string> splitExpression(std::string expression, char opt);
 bool isNumber(const std::string& str);
+bool isEnclosedByParentheses(string expression);
 
 #endif

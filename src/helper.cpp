@@ -1,5 +1,3 @@
-#include <cmath>
-
 #include "../include/helper.h"
 
 using namespace std;
@@ -52,26 +50,41 @@ vector<string> splitExpression (string expression, char opt) {
     }
 
     // Remove parentheses
-    if (lhs.front() == '(' && lhs.back() == ')') {
-        lhs = lhs.substr(1, lhs.length() - 2);
+    if (isEnclosedByParentheses(rhs)) {
+        rhs = rhs.substr(1, rhs.length() - 2);
     }
 
-    if (rhs.front() == '(' && rhs.back() == ')') {
-        rhs = rhs.substr(1, rhs.length() - 2);
+    if (isEnclosedByParentheses(lhs)) {
+        lhs = lhs.substr(1, lhs.length() - 2);
     }
 
     return vector<string>{lhs, rhs};
 }
 
-bool isNumber(const std::string& str) {
+bool isNumber(const string& str) {
     // Check if the string is a valid number
     try {
         size_t idx;
-        std::stod(str, &idx); // Convert to double and get the position of the last parsed character
+        stod(str, &idx); // Convert to double and get the position of the last parsed character
         return idx == str.size(); // Ensure the entire string was parsed
-    } catch (const std::invalid_argument&) {
+    } catch (const invalid_argument&) {
         return false; // Not a valid number
-    } catch (const std::out_of_range&) {
+    } catch (const out_of_range&) {
         return false; // Number is too large or small
     }
+}
+
+bool isEnclosedByParentheses(string expression) {
+    stack<int> parentheses;
+    int bracketNum = 0;
+    for (int i = 0; i < expression.length() - 1; i++) {
+        if (expression[i] == '(') {
+            parentheses.push(bracketNum);
+            bracketNum++;
+        } else if (expression[i] == ')') {
+            parentheses.pop();
+        }
+    }
+
+    return parentheses.size() == 1 && parentheses.top() == 0;
 }

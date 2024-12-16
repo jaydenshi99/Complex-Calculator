@@ -137,8 +137,9 @@ Complex Calculator::evaluateExpression(string expression) {
         return lhs / rhs;
     }
 
+    // Should never reach this point
     cout << "bug in evaluate expression" << endl;
-    return Complex(); // Should never reach this point
+    return Complex(); 
 }
 
 // System Control
