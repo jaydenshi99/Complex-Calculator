@@ -108,6 +108,7 @@ Complex Calculator::evaluateExpression(string expression) {
 
     // Expression is enclosed by parentheses
     if (isEnclosedByParentheses(expression)) {
+        cout << "in parentheses: " << expression << endl;
         return evaluateExpression(expression.substr(1, expression.length() - 2));
     }
 
