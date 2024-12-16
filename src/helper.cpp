@@ -1,4 +1,7 @@
+#include <string>
+#include <vector>
 #include <cmath>
+#include <stack>
 
 #include "../include/helper.h"
 
@@ -19,4 +22,74 @@ int compareDouble(double a, double b) {
 // Check if double is zero with small epsilon tolerance
 bool isZero(double a) {
     return fabs(a) < EPSILON;
+}
+
+// Splits an expression by the first instance of the given operator
+vector<string> splitExpression (string expression, char opt) {
+    string lhs = "";
+    string rhs = "";
+    int lbCount = 0;
+    int rbCount = 0;
+
+    bool operatorFound = false;
+    for (char c : expression) {
+        if (c == opt && lbCount == rbCount && !operatorFound) {
+            operatorFound = true;
+            continue;
+        } else if (c == '(') {
+            lbCount++;
+        } else if (c == ')') {
+            rbCount++;
+        }
+
+        if (operatorFound) {
+            rhs += c;
+        } else {
+            lhs += c;
+        }
+    }
+
+    // Return empty vector to indicate no operator was found
+    if (!operatorFound) {
+        return vector<string>();
+    }
+
+    // Remove parentheses
+    if (isEnclosedByParentheses(rhs)) {
+        rhs = rhs.substr(1, rhs.length() - 2);
+    }
+
+    if (isEnclosedByParentheses(lhs)) {
+        lhs = lhs.substr(1, lhs.length() - 2);
+    }
+
+    return vector<string>{lhs, rhs};
+}
+
+bool isNumber(const string& str) {
+    // Check if the string is a valid number
+    try {
+        size_t idx;
+        stod(str, &idx); // Convert to double and get the position of the last parsed character
+        return idx == str.size(); // Ensure the entire string was parsed
+    } catch (const invalid_argument&) {
+        return false; // Not a valid number
+    } catch (const out_of_range&) {
+        return false; // Number is too large or small
+    }
+}
+
+bool isEnclosedByParentheses(string expression) {
+    stack<int> parentheses;
+    int bracketNum = 0;
+    for (int i = 0; i < expression.length() - 1; i++) {
+        if (expression[i] == '(') {
+            parentheses.push(bracketNum);
+            bracketNum++;
+        } else if (expression[i] == ')') {
+            parentheses.pop();
+        }
+    }
+
+    return parentheses.size() == 1 && parentheses.top() == 0;
 }

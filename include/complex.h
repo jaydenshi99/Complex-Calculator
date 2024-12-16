@@ -5,7 +5,7 @@ class Complex {
     private:
         double real;
         double imag;
-    
+
     public:
         // Constructor
         Complex(double r = 0, double i = 0);
@@ -30,7 +30,8 @@ class Complex {
         Complex conjugate() const;
 
         // Display
-        void print_cartesian() const;
+        void display_cartesian() const;
+        void display_cartesian_no_space() const;
 };
 
 #endif

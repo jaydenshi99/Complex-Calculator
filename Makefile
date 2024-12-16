@@ -1,11 +1,11 @@
 # Compiler and flags
 CXX = g++
-CXXFLAGS = -Wall -Iinclude -g
+CXXFLAGS = -Wall -Iinclude -g -std=c++20
 
 # Source files and output
 SRC = $(wildcard src/*.cpp)
 OBJ = $(SRC:.cpp=.o)
-TARGET = mandelbrot
+TARGET = calc
 
 # Build target
 $(TARGET): $(OBJ)
