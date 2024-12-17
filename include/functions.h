@@ -13,6 +13,9 @@ Complex ccos(Complex z);
 Complex ctan(Complex z);
 
 // Hyperbolic
+Complex csinh(Complex z);
+Complex ccosh(Complex z);
+Complex ctanh(Complex z);
 
 // Powers and Roots
 

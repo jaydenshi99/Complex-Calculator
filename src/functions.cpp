@@ -27,3 +27,17 @@ Complex ccos(Complex z) {
 Complex ctan(Complex z) {
     return csin(z) / ccos(z);
 }
+
+Complex csinh(Complex z) {
+    Complex w = cexp(z) - cexp(Complex(-1, 0) * z);
+    return w / Complex(2, 0);
+}
+
+Complex ccosh(Complex z) {
+    Complex w = cexp(z) + cexp(Complex(-1, 0) * z);
+    return w / Complex(2, 0);
+}
+
+Complex ctanh(Complex z) {
+    return (cexp(z) - cexp(Complex(-1, 0) * z)) / (cexp(z) + cexp(Complex(-1, 0) * z));
+}
