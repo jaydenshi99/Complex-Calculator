@@ -178,9 +178,9 @@ Complex Calculator::evaluateExpression(string expression) {
     // Functions
     vector<string> fn = parseFunction(expression);
     if (fn.size() == 2) {
-        if (debugMode) cout << "complex function: " << fn[0] << "| input: " << fn[1] << endl;
+        if (debugMode) cout << "complex function: " << fn[0] << " | input: " << fn[1] << endl;
 
-        string fName = fn[0];
+        string fName = fn[0]; 
         Complex z = evaluateExpression(fn[1]);
 
         if (fName == "exp") return cexp(z);
