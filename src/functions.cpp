@@ -10,6 +10,10 @@ Complex cexp(Complex z) {
     return Complex(magn * cos(z.getImag()), magn * sin(z.getImag()));
 }
 
+Complex clogp(Complex z) {
+    return Complex(log(z.magnitude()), z.pArg());
+}
+
 Complex csin(Complex z) {
     Complex w = cexp(Complex(0, 1) * z) - cexp(Complex(0, -1) * z);
     return w / Complex(0, 2);

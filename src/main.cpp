@@ -7,10 +7,11 @@
 
 int main (void) {
     Complex z = Complex(1, 2);
-    cExp(z).display_cartesian();
-    cSin(z).display_cartesian();
-    cCos(z).display_cartesian();
-    cTan(z).display_cartesian();
+    cexp(z).display_cartesian();
+    csin(z).display_cartesian();
+    ccos(z).display_cartesian();
+    ctan(z).display_cartesian();
+    clogp(z).display_cartesian();
     // Calculator calc;
     // calc.initialise();
 }

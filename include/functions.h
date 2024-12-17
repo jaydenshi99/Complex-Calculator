@@ -5,6 +5,7 @@
 
 // Exponential
 Complex cexp(Complex z);
+Complex clogp(Complex z);
 
 // Trigonometric
 Complex csin(Complex z);
