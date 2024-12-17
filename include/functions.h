@@ -1,7 +1,7 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-#include "complex.h";
+#include "complex.h"
 
 // Exponential
 Complex cExp(Complex z);
