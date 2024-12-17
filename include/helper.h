@@ -8,5 +8,6 @@ bool isZero(double a);
 std::vector<std::string> splitExpression(std::string expression, char opt);
 bool isNumber(const std::string& str);
 bool isEnclosedByParentheses(std::string expression);
+std::vector<std::string> parseFunction(std::string expression);
 
 #endif

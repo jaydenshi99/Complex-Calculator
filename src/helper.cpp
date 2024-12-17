@@ -80,7 +80,6 @@ bool isNumber(const string& str) {
 }
 
 bool isEnclosedByParentheses(string expression) {
-
     if (expression.length() < 2 || expression.front() != '(' || expression.back() != ')') {
         return false;
     }
@@ -97,4 +96,27 @@ bool isEnclosedByParentheses(string expression) {
     }
 
     return parentheses.size() == 1 && parentheses.top() == 0;
+}
+
+vector<string> parseFunction(string expression) {
+    if (expression.length() < 2) {
+        return vector<string>();
+    }
+
+    int i = 0;
+    while (i < expression.length()) {
+        if (expression[i] == '(') break;
+        i++;
+    }
+
+    string fName = expression.substr(0, i);
+    string z = expression.substr(i, expression.length() - 1);
+
+    vector<string> ret;
+    if (isEnclosedByParentheses(z)) {
+        ret.push_back(fName);
+        ret.push_back(z.substr(1, z.length() - 2));
+    }
+
+    return ret;
 }
