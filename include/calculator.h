@@ -9,6 +9,7 @@
 
 class Calculator {
     private:
+        // Data
         std::vector<std::string> expressions;
         std::unordered_map<std::string, std::string> variables;
 
