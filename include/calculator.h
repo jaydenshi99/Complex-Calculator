@@ -13,11 +13,6 @@ class Calculator {
         std::vector<std::string> expressions;
         std::unordered_map<std::string, std::string> variables;
 
-        // Settings
-        bool debugMode;
-
-        void toggleDebug();
-
         // User Input
         bool readLine();
 
