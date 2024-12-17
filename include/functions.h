@@ -18,5 +18,6 @@ Complex ccosh(Complex z);
 Complex ctanh(Complex z);
 
 // Powers and Roots
+Complex cpowp(Complex b, Complex p);
 
 #endif

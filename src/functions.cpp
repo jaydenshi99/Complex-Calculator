@@ -41,3 +41,7 @@ Complex ccosh(Complex z) {
 Complex ctanh(Complex z) {
     return (cexp(z) - cexp(Complex(-1, 0) * z)) / (cexp(z) + cexp(Complex(-1, 0) * z));
 }
+
+Complex cpowp(Complex b, Complex p) {
+    return cexp(p * clogp(b));
+}
