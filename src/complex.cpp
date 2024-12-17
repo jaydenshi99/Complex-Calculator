@@ -3,6 +3,7 @@
 
 #include "../include/complex.h"
 #include "../include/helper.h"
+#include "../include/constants.h"
 
 using namespace std;
 
@@ -56,6 +57,11 @@ bool Complex::operator==(const Complex& other) const {
 // Other Operations
 double Complex::magnitude() const {
     return sqrt(real * real + imag * imag);
+}
+
+double Complex::pArg() const {
+    // Handle error case
+    return atan2(imag, real);
 }
 
 Complex Complex::conjugate() const {
