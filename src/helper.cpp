@@ -80,6 +80,11 @@ bool isNumber(const string& str) {
 }
 
 bool isEnclosedByParentheses(string expression) {
+
+    if (expression.length() < 2 || expression.front() != '(' || expression.back() != ')') {
+        return false;
+    }
+
     stack<int> parentheses;
     int bracketNum = 0;
     for (int i = 0; i < expression.length() - 1; i++) {

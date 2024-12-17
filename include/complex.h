@@ -27,6 +27,7 @@ class Complex {
 
         // Other Operations
         double magnitude() const;
+        double pArg() const;
         Complex conjugate() const;
 
         // Display

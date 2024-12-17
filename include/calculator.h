@@ -21,6 +21,11 @@ class Calculator {
         // User Input
         bool readLine();
 
+        // Settings
+        bool debugMode;
+
+        void toggleDebug();
+
         // Evaluation
         Complex evaluateExpression(std::string expression);
 

@@ -7,6 +7,7 @@
 
 #include <../include/calculator.h>
 #include <../include/helper.h>
+#include <../include/constants.h>
 
 #define NEXT true
 #define EXIT false
@@ -62,11 +63,11 @@ bool Calculator::readLine() {
         res.display_cartesian_no_space();
         cout << endl;
     } else if (equalCharCount == 0) {
-        expressions.push_back(line);
         Complex res = evaluateExpression(line);
         cout << "Result: ";
         res.display_cartesian_no_space();
         cout << endl;
+        expressions.push_back(line);
     } else {
         cout << "ERROR: multiple equal signs" << endl;
         return NEXT;
@@ -86,10 +87,10 @@ Complex Calculator::evaluateExpression(string expression) {
     // Expression is a constant
     if (expression == "e") {
         if (debugMode) cout << "exponential constant: " << expression << endl;
-        return Complex(2.718281828459045, 0);
+        return Complex(Constants::E, 0);
     } else if (expression == "pi") {
         if (debugMode) cout << "pi constant: " << expression << endl;
-        return Complex(3.141592653589793, 0);
+        return Complex(Constants::PI, 0);
     }
 
     // Expression is a real number
@@ -115,6 +116,7 @@ Complex Calculator::evaluateExpression(string expression) {
 
     // Expression is a variable
     if (variables.find(expression) != variables.end()) {
+        if (debugMode) cout << "variable: " << expression << endl;
         return evaluateExpression(variables[expression]);
     }
 
@@ -170,7 +172,6 @@ Complex Calculator::evaluateExpression(string expression) {
 // Settings
 void Calculator::toggleDebug() {
     debugMode = !debugMode;
-
     if (debugMode) {
         cout << "Debug mode on" << endl;
     } else {
