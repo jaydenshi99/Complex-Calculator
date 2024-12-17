@@ -4,12 +4,12 @@
 #include "complex.h"
 
 // Exponential
-Complex cExp(Complex z);
+Complex cexp(Complex z);
 
 // Trigonometric
-Complex cSin(Complex z);
-Complex cCos(Complex z);
-Complex cTan(Complex z);
+Complex csin(Complex z);
+Complex ccos(Complex z);
+Complex ctan(Complex z);
 
 // Hyperbolic
 
