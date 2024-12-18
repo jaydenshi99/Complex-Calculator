@@ -35,6 +35,7 @@ bool Calculator::readLine() {
         return NEXT;
     } else if (line == "ellie shi") {
         cout << "Did you mean: smelly shi?" << endl;
+        return NEXT;
     } else if (line == "jayden" || line == "jayden shi") {
         cout << "has the cutest coolest gf eva" << endl;
         return NEXT;
