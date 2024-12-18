@@ -29,6 +29,13 @@ bool Calculator::readLine() {
         return EXIT;
     }
 
+    // Easter eggs :)
+    if (line == "ellie" || line == "ellie shi") {
+        cout << "is smelly" << endl;
+    } else if (line == "jayden" || line == "jayden shi") {
+        cout << "has the cutest coolest gf eva" << endl;
+    }
+
     // Settings
     if (line == "debug") {
         toggleDebug();
